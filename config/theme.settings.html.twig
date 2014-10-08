@@ -1,262 +1,342 @@
-{% import "/_macros/utils.html.twig" as utils %}
+{% import _self as utils %}
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel-group" id="accordion">
-			{# Begin branding #}
+			{# Begin branding colors #}
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseBranding">Branding</a></h3>
+					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseBradningColors">Branding Colors</a></h3>
 				</div>
-				<div id="collapseBranding" class="panel-collapse collapse">
-
+				<div id="collapseBradningColors" class="panel-collapse collapse">
+					<div class="panel-body">
+						{# Begin branding colors #}
+						<fieldset>
+							<legend>Branding Colors</legend>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Primary brand color</label>
+								<div class="col-sm-9">
+									<input id="brand-primary" name="settings[current][branding][branding_colors][brand-primary]" value="{{ settings.current.branding.branding_colors['brand-primary'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="brand-primary">Secondary brand color</label>
+								<div class="col-sm-9">
+									<input id="brand-second" name="settings[current][branding][branding_colors][brand-second]" value="{{ settings.current.branding.branding_colors['brand-second'] }}" size="7">
+								</div>
+							</div>
+						</fieldset>
+						{# End branding colors #}
+						{# Begin feedback states #}
+						<fieldset>
+							<legend>Feedback States</legend>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="brand-success">Success background color</label>
+								<div class="col-sm-9">
+									<input id="brand-success" name="settings[current][branding][feedback_states][brand-success]" value="{{ settings.current.branding.feedback_states['brand-success'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="state-success-text">Success text color</label>
+								<div class="col-sm-9">
+									<input id="state-success-text" name="settings[current][branding][feedback_states][state-success-text]" value="{{ settings.current.branding.feedback_states['state-success-text'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="brand-info">Info background color</label>
+								<div class="col-sm-9">
+									<input id="brand-info" name="settings[current][branding][feedback_states][brand-info]" value="{{ settings.current.branding.feedback_states['brand-info'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="state-info-text">Info text color</label>
+								<div class="col-sm-9">
+									<input id="state-info-text" name="settings[current][branding][feedback_states][state-info-text]" value="{{ settings.current.branding.feedback_states['state-info-text'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="brand-warning">Warning background color</label>
+								<div class="col-sm-9">
+									<input id="brand-warning" name="settings[current][branding][feedback_states][brand-warning]" value="{{ settings.current.branding.feedback_states['brand-warning'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="state-warning-text">Warning text color</label>
+								<div class="col-sm-9">
+									<input id="state-warning-text" name="settings[current][branding][feedback_states][state-warning-text]" value="{{ settings.current.branding.feedback_states['state-warning-text'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="brand-danger">Danger background color</label>
+								<div class="col-sm-9">
+									<input id="brand-danger" name="settings[current][branding][feedback_states][brand-danger]" value="{{ settings.current.branding.feedback_states['brand-danger'] }}" size="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="state-danger-text">Danger text color</label>
+								<div class="col-sm-9">
+									<input id="state-danger-text" name="settings[current][branding][feedback_states][state-danger-text]" value="{{ settings.current.branding.feedback_states['state-danger-text'] }}" size="7">
+								</div>
+							</div>
+						</fieldset>
+						{# End feedback states #}
+					</div>
+				</div>
+			</div>
+			{# End branding colors #}
+			{# Begin logo, images, and colors #}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseLogoImagesColor">Logo, Images, and Colors</a></h3>
+				</div>
+				<div id="collapseLogoImagesColor" class="panel-collapse collapse">
 					<div class="panel-body">
 						{# Begin logo & background #}
-						<h4>Logo & Background</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Logo & Background</legend>
 							<div class="form-group">
 								<label for="logo-custom" class="col-sm-3 control-label">Use a custom logo?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="logo-custom" name="logo-custom" {{ utils.checkBoxValue(settings.current.branding.logo_backgroung.custom_logo) }}>
+									{{ utils.checkBox("settings[current][logo_images_and_colors][logo_background][logo-custom]", settings.current.branding.logo_background['logo-custom'],"logo-custom") }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="logo-custom-upload" class="col-sm-3 control-label">Shop Logo (should be less than 700 pixels wide)</label>
 								<div class="col-sm-9">
-									<input type="file" id="logo-custom-upload" name="logo" data-max-width="700" data-max-height="600" data-bind="">
+									<input type="file" id="logo-custom-upload" name="settings[current][logo_images_and_colors][logo_background][logo-custom-upload]" data-max-width="700" data-max-height="600" data-bind="">
 									<p><i class="fa fa-paperclip"></i> <a target="_blank" href="#">logo.png</a></p>
-								</div>								
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="logo-custom-center" class="col-sm-3 control-label">Center logo (when main navigation is below)?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="logo-custom-center" name="logo-center" value="1">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][logo_background][logo-custom-center]", settings.current.logo_images_and_colors.logo_background['logo-custom-center']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="favicon-image" class="col-sm-3 control-label">Use a favicon image?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="favicon-image" name="favicon-image" value="1">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][logo_background][favicon-image]", settings.current.logo_images_and_colors.logo_background['favicon-image']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="favicon-upload" class="col-sm-3 control-label">Upload a favicon (must be 16px x 16px)</label>
 								<div class="col-sm-9">
-									<input type="file" id="favicon-upload" name="favicon-upload" data-max-width="16" data-max-height="16" data-bind="favicon.png">
+									<input type="file" id="favicon-upload" name="settings[current][logo_images_and_colors][logo_background][favicon-upload]" data-max-width="16" data-max-height="16" data-bind="favicon.png">
 									<p><i class="fa fa-paperclip"></i> <a target="_blank" href="#">favicon.png</a></p>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="site-bg-image" class="col-sm-3 control-label">Use a background image?</label>
 								<div class="col-sm-9">
-									<select id="site-bg-image" name="site-bg-image">
-										<option value="">No background image</option>
-										<option value="custom">Use custom image (see upload button below)</option>
-										<option value="style1">Use background image of style 1</option>
-										<option value="style2">Use background image of style 2</option>
+									<select id="site-bg-image" name="settings[current][logo_images_and_colors][logo_background][site-bg-image]">
+										<option value="" {{ utils.selectValue(settings.current.logo_images_and_colors.logo_background['site-bg-image'],"") }}>No background image</option>
+										<option value="custom" {{ utils.selectValue(settings.current.logo_images_and_colors.logo_background['site-bg-image'],"custom") }}>Use custom image (see upload button below)</option>
+										<option value="style1" {{ utils.selectValue(settings.current.logo_images_and_colors.logo_background['site-bg-image'],"style1") }}>Use background image of style 1</option>
+										<option value="style2" {{ utils.selectValue(settings.current.logo_images_and_colors.logo_background['site-bg-image'],"style2") }}>Use background image of style 2</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="site-bg-image-custom" class="col-sm-3 control-label">Custom background image</label>
 								<div class="col-sm-9">
-									<input type="file" id="site-bg-image-custom" name="site-bg-image-custom" data-bind="site-bg-image-custom.png">
+									<input type="file" id="site-bg-image-custom" name="settings[current][logo_images_and_colors][logo_background][site-bg-image-custom]" data-bind="site-bg-image-custom.png">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="site-bg-image-display" class="col-sm-3 control-label">Background image display style</label>
 								<div class="col-sm-9">
-									<input type="radio" name="site-bg-image-display" value="tiled"> Tiled
-									<input type="radio" name="site-bg-image-display" value="full"> Not tiled
-									<input type="radio" name="site-bg-image-display" value="stretch"> Stretch
+									<input type="radio" name="settings[current][logo_images_and_colors][logo_background][site-bg-image-display]" value="tiled" {{ utils.checkValue(settings.current.logo_images_and_colors.logo_background['site-bg-image-display'],"tiled") }}> Tiled
+									<input type="radio" name="settings[current][logo_images_and_colors][logo_background][site-bg-image-display]" value="full" {{ utils.checkValue(settings.current.logo_images_and_colors.logo_background['site-bg-image-display'],"full") }}> Not tiled
+									<input type="radio" name="settings[current][logo_images_and_colors][logo_background][site-bg-image-display]" value="stretch" {{ utils.checkValue(settings.current.logo_images_and_colors.logo_background['site-bg-image-display'],"stretch") }}> Stretch
 								</div>
 							</div>
-						</form>
+						</fieldset>						
 						{# End logo & background #}
 						{# Begin toolbar #}
-						<h4>Toolbar</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Toolbar</legend>						
 							<div class="form-group">
 								<label for="toolbar-bg-color" class="col-sm-3 control-label">Toolbar background color</label>
 								<div class="col-sm-9">
-									<input id="toolbar-bg-color" name="toolbar-bg-color" value="#000000" size="7">
+									<input id="toolbar-bg-color" name="settings[current][logo_images_and_colors][toolbar][toolbar-bg-color]" value="{{ settings.current.logo_images_and_colors.toolbar['toolbar-bg-color'] }}"  size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-bg-color-none" class="col-sm-3 control-label">Remove background color</label>
 								<div class="col-sm-9">
-									<input type="checkbox" value="1" name="toolbar-bg-color-none" id="toolbar-bg-color-none">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][toolbar][toolbar-bg-color-none]", settings.current.logo_images_and_colors.toolbar['toolbar-bg-color-none']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-text-color" class="col-sm-3 control-label">Toolbar text color</label>
 								<div class="col-sm-9">
-									<input id="toolbar-text-color" name="toolbar-text-color" value="#000000" size="7">
+									<input id="toolbar-text-color" name="settings[current][logo_images_and_colors][toolbar][toolbar-text-color]" value="{{ settings.current.logo_images_and_colors.toolbar['toolbar-text-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-text-color-hover" class="col-sm-3 control-label">Toolbar text hover color</label>
 								<div class="col-sm-9">
-									<input id="toolbar-text-color-hover" name="toolbar-text-color-hover" class="" value="#000000" size="7">
+									<input id="toolbar-text-color-hover" name="settings[current][logo_images_and_colors][toolbar][toolbar-text-color-hover]" class="" value="{{ settings.current.logo_images_and_colors.toolbar['toolbar-text-color-hover'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-border-style" class="col-sm-3 control-label">Show toobar bottom border?</label>
 								<div class="col-sm-9">
-									<input type="radio" name="toolbar-border-style" value="none"> None
-									<input type="radio" name="toolbar-border-style" value="regular_width"> Regular width
-									<input type="radio" name="toolbar-border-style" value="full_width"> Full width
+									<input type="radio" name="settings[current][logo_images_and_colors][toolbar][toolbar-border-style]" value="none" {{ utils.checkValue(settings.current.logo_images_and_colors.toolbar['toolbar-border-style'],"none") }}> None
+									<input type="radio" name="settings[current][logo_images_and_colors][toolbar][toolbar-border-style]" value="regular_width" {{ utils.checkValue(settings.current.logo_images_and_colors.toolbar['toolbar-border-style'],"regular_width") }}> Regular width
+									<input type="radio" name="settings[current][logo_images_and_colors][toolbar][toolbar-border-style]" value="full_width" {{ utils.checkValue(settings.current.logo_images_and_colors.toolbar['toolbar-border-style'],"full_width") }}> Full width
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-border-color" class="col-sm-3 control-label">Toolbar border color</label>
 								<div class="col-sm-9">
-									<input id="toolbar-border-color" name="toolbar-border-color" class="" value="#000000" size="7">
+									<input id="toolbar-border-color" name="settings[current][logo_images_and_colors][toolbar][toolbar-border-color]" class="" value="{{ settings.current.logo_images_and_colors.toolbar['toolbar-border-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="toolbar-border-search" class="col-sm-3 control-label">Show border around search?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" value="1" name="toolbar-border-search">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][toolbar][toolbar-border-search]", settings.current.logo_images_and_colors.toolbar['toolbar-border-search']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="search-border-color" class="col-sm-3 control-label">Search border color</label>
 								<div class="col-sm-9">
-									<input id="search-border-color" name="search-border-color" class="" value="#000000" size="7">
+									<input id="search-border-color" name="settings[current][logo_images_and_colors][toolbar][search-border-color]" class="" value="{{ settings.current.logo_images_and_colors.toolbar['search-border-color'] }}" size="7">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End toolbar #}
 						{# Begin footer colors #}
-						<h4>Footer Colors</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Footer Colors</legend>						
 							<div class="form-group">
 								<label for="footer-background-color" class="col-sm-3 control-label">Footer background color</label>
 								<div class="col-sm-9">
-									<input id="footer-background-color" name="footer-background-color" class="" value="#000000" size="7">
+									<input id="footer-background-color" name="settings[current][logo_images_and_colors][footer_colors][footer-background-color]" class="" value="{{ settings.current.logo_images_and_colors.footer_colors['footer-background-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-bg-color-remove" class="col-sm-3 control-label">Remove footer color</label>
 								<div class="col-sm-9">
-									<input type="checkbox" value="1" name="footer-bg-color-remove" id="footer-bg-color-remove">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][footer_colors][footer-bg-color-remove]", settings.current.logo_images_and_colors.footer_colors['footer-bg-color-remove']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-text-color" class="col-sm-3 control-label">Footer text color</label>
 								<div class="col-sm-9">
-									<input id="footer-text-color" name="footer-text-color" class="" value="#000000" size="7">
+									<input id="footer-text-color" name="settings[current][logo_images_and_colors][footer_colors][footer-text-color]" class="" value="{{ settings.current.logo_images_and_colors.footer_colors['footer-text-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-heading-color" class="col-sm-3 control-label">Footer heading color</label>
 								<div class="col-sm-9">
-									<input id="footer-heading-color" name="footer-heading-color" class="" value="#000000" size="7">
+									<input id="footer-heading-color" name="settings[current][logo_images_and_colors][footer_colors][footer-heading-color]" class="" value="{{ settings.current.logo_images_and_colors.footer_colors['footer-heading-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-heading-underline" class="col-sm-3 control-label">Show footer heading underline?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" value="1" name="footer-heading-underline" id="footer-heading-underline">
+									{{ utils.checkBox("settings[current][logo_images_and_colors][footer_colors][footer-heading-underline]", settings.current.logo_images_and_colors.footer_colors['footer-heading-underline']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-heading-underline-color" class="col-sm-3 control-label">Footer heading underline color</label>
 								<div class="col-sm-9">
-									<input id="footer-heading-underline-color" name="footer-heading-underline-color" class="" value="#000000" size="7">
+									<input id="footer-heading-underline-color" name="settings[current][logo_images_and_colors][footer_colors][footer-heading-underline-color]" class="" value="{{ settings.current.logo_images_and_colors.footer_colors['footer-heading-underline-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-link-color" class="col-sm-3 control-label">Footer link color</label>
 								<div class="col-sm-9">
-									<input id="footer-link-color" name="footer-link-color" class="" value="#000000" size="7">
+									<input id="footer-link-color" name="settings[current][logo_images_and_colors][footer_colors][footer-link-color]" class="" value="{{ settings.current.logo_images_and_colors.footer_colors['footer-link-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-link-color-hover" class="col-sm-3 control-label">Footer link hover color</label>
 								<div class="col-sm-9">
-									<input id="footer-link-color-hover" name="footer-link-color-hover" class="" value="#000000" size="7">
+									<input id="footer-link-color-hover" name="settings[current][branding][footer_colors][footer-link-color-hover]" class="" value="{{ settings.current.branding.footer_colors['footer-link-color-hover'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-border-style" class="col-sm-3 control-label">Show footer bottom border?</label>
 								<div class="col-sm-9">
-									<input type="radio" name="footer-border-style" value="none"> None
-									<input type="radio" name="footer-border-style" value="regular_width"> Regular width
-									<input type="radio" name="footer-border-style" value="full_width"> Full width
+									<input type="radio" name="settings[current][branding][footer_colors][footer-border-style]" value="none"
+									{{ utils.checkValue(settings.current.branding.footer_colors['footer-border-style'],"none") }}> None
+									<input type="radio" name="settings[current][branding][footer_colors][footer-border-style]" value="regular_width" {{ utils.checkValue(settings.current.branding.footer_colors['footer-border-style'],"regular_width") }}> Regular width
+									<input type="radio" name="settings[current][branding][footer_colors][footer-border-style]" value="full_width" {{ utils.checkValue(settings.current.branding.footer_colors['footer-border-style'],"full_width") }}> Full width
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="footer-border-color" class="col-sm-3 control-label">Footer border color</label>
 								<div class="col-sm-9">
-									<input id="footer-border-color" name="footer-border-color" class="" value="#000000" size="7">
+									<input id="footer-border-color" name="settings[current][branding][footer_colors][footer-border-color]" class="" value="{{ settings.current.branding.footer_colors['footer-border-color'] }}" size="7">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End footer colors #}
 						{# Begin content area #}
-						<h4>Content Area Color</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Content Area Color</legend>
 							<div class="form-group">
 								<label for="site-background-color" class="col-sm-3 control-label">Site background color</label>
 								<div class="col-sm-9">
-									<input id="site-border-color" name="site-border-color" class="" value="#000000" size="7">
+									<input id="site-border-color" name="settings[current][branding][content_border_color][site-border-color]" class="" value="{{ settings.current.branding.content_border_color['site-border-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="content-background-color" class="col-sm-3 control-label">Content area background color</label>
 								<div class="col-sm-9">
-									<input id="content-border-color" name="content-border-color" class="" value="#000000" size="7">
+									<input id="content-border-color" name="settings[current][branding][content_border_color][content-background-color]" class="" value="{{ settings.current.branding.content_border_color['content-background-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="content-background-transparent" class="col-sm-3 control-label">No content area background color</label>
 								<div class="col-sm-9">
-									<input type="checkbox" value="1" name="content-background-transparent" id="content-background-transparent">
+									{{ utils.checkBox("settings[current][branding][content_border_color][content-background-transparent]", settings.current.branding.content_border_color['content-background-transparent']) }}
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label for="text-color" class="col-sm-3 control-label">Text color</label>
 								<div class="col-sm-9">
-									<input id="text-color" name="text-color" class="" value="#000000" size="7">
+									<input id="text-color" name="settings[current][branding][content_border_color][text-color]" class="" value="{{ settings.current.branding.content_border_color['text-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="heading-color" class="col-sm-3 control-label">Heading color</label>
 								<div class="col-sm-9">
-									<input id="heading-color" name="heading-color" class="" value="#000000" size="7">
+									<input id="heading-color" name="settings[current][branding][content_border_color][heading-color]" class="" value="{{ settings.current.branding.content_border_color['heading-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="link-color" class="col-sm-3 control-label">Link color</label>
 								<div class="col-sm-9">
-									<input id="link-color" name="link-color" class="" value="#000000" size="7">
+									<input id="link-color" name="settings[current][branding][content_border_color][link-color]" class="" value="{{ settings.current.branding.content_border_color['link-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="link-color-hover" class="col-sm-3 control-label">Link hover color</label>
 								<div class="col-sm-9">
-									<input id="link-color-hover" name="link-color-hover" class="" value="#000000" size="7">
+									<input id="link-color-hover" name="settings[current][branding][content_border_color][link-color-hover]" class="" value="{{ settings.current.branding.content_border_color['link-color-hover'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="price-color" class="col-sm-3 control-label">Price color</label>
 								<div class="col-sm-9">
-									<input id="price-color" name="price-color" class="" value="#000000" size="7">
+									<input id="price-color" name="settings[current][branding][content_border_color][price-color]" class="" value="{{ settings.current.branding.content_border_color['price-color'] }}" size="7">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End content area #}
-						{# Begin buttons #}						
-						<h4>Buttons</h4>
-						<form class="form-horizontal" role="form">
+						{# Begin buttons #}
+						<fieldset>
+							<legend>Buttons</legend>
 							<div class="form-group">
 								<lable class="col-sm-3 control-label" for="btn-bg-color">
 									Button background color
 								</lable>
 								<div class="col-sm-9">
-									<input id="btn-bg-color" class="" name="btn-bg-color" value="#000000" size="7">
+									<input id="btn-bg-color" class="" name="settings[current][branding][buttons][btn-bg-color]" value="{{ settings.current.branding.buttons['btn-bg-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
@@ -264,7 +344,7 @@
 									Button background color hover
 								</lable>
 								<div class="col-sm-9">
-									<input id="btn-bg-color-hover" class="" name="btn-bg-color-hover" value="#000000" size="7">
+									<input id="btn-bg-color-hover" class="" name="settings[current][branding][buttons][btn-bg-color-hover]" value="{{ settings.current.branding.buttons['btn-bg-color-hover'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
@@ -272,7 +352,7 @@
 									Button text color
 								</lable>
 								<div class="col-sm-9">
-									<input id="btn-text-color" class="" name="btn-text-color" value="#000000" size="7">
+									<input id="btn-text-color" class="" name="settings[current][branding][buttons][btn-text-color]" value="{{ settings.current.branding.buttons['btn-text-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
@@ -280,7 +360,7 @@
 									Button text color hover
 								</lable>
 								<div class="col-sm-9">
-									<input id="btn-text-color-hover" class="" name="btn-text-color-hover" value="#000000" size="7">
+									<input id="btn-text-color-hover" class="" name="settings[current][branding][buttons][btn-text-color-hover]" value="{{ settings.current.branding.buttons['btn-text-color-hover'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
@@ -288,74 +368,74 @@
 									Button border radius
 								</lable>
 								<div class="col-sm-9">
-									<select name="btn-border-radius" id="btn-border-radius">
-										<option value="15px">15px</option>
-										<option value="10px">10px</option>
-										<option value="7px">7px</option>
-										<option value="5px">5px</option>
-										<option value="4px">4px</option>
-										<option value="3px">3px</option>
-										<option value="2px">2px</option>
-										<option value="none" selected="selected">None</option>
+									<select name="settings[current][branding][buttons][btn-border-radius]" id="btn-border-radius">
+										<option value="15px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"15px") }}>15px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"10px") }}>10px</option>
+										<option value="7px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"7px") }}>7px</option>
+										<option value="5px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"5px") }}>5px</option>
+										<option value="4px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"4px") }}>4px</option>
+										<option value="3px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"3px") }}>3px</option>
+										<option value="2px" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"2px") }}>2px</option>
+										<option value="none" {{ utils.selectValue(settings.current.branding.buttons['btn-border-radius'],"none") }}>None</option>
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End buttons #}
 						{# Begin borders #}
-						<h4>Borders</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Borders</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="general-border-style">General border style</label>
 								<div class="col-sm-9">
-									<select id="general-border-style" name="general-border-style">
-										<option value="solid" selected="selected">Solid</option>
-										<option value="dashed">Dashed</option>
-										<option value="dotted">Dotted</option>
+									<select id="general-border-style" name="settings[current][branding][borders][general-border-style]">
+										<option value="solid"  {{ utils.selectValue(settings.current.branding.borders['general-border-style'],"solid") }}>Solid</option>
+										<option value="dashed" {{ utils.selectValue(settings.current.branding.borders['general-border-style'],"dashed") }}>Dashed</option>
+										<option value="dotted" {{ utils.selectValue(settings.current.branding.borders['general-border-style'],"dotted") }}>Dotted</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="gernal-border-color">General border color</label>
 								<div class="col-sm-9">
-									<input id="gernal-border-color" name="gernal-border-color" value="#000000" size="7">
+									<input id="gernal-border-color" name="settings[current][branding][borders][gernal-border-color]" value="{{ settings.current.branding.borders['gernal-border-color'] }}" size="7">
 								</div>									
 							</div>
-						</form>
+						</fieldset>
 						{# End borders #}
 						{# Begin tabs #}
-						<h4>Tabs</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Tabs</legend>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="tab-bg-color">Tab background color</label>
 								<div class="col-sm-9">
-									<input id="tab-bg-color" name="tab-bg-color" value="#000000" size="7">
+									<input id="tab-bg-color" name="settings[current][branding][tabs][tab-bg-color]" value="{{ settings.current.branding.tabs['tab-bg-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="tab-bg-color-none">No tab background color</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="tab-bg-color-none" name="tab-bg-color-none" value="">
+									{{ utils.checkBox("settings[current][branding][tabs][tab-bg-color-none]", settings.current.branding.tabs['tab-bg-color-none']) }}
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="tab-active-bg-color">Tab active background color</label>
 								<div class="col-sm-9">
-									<input id="tab-active-bg-color" name="tab-active-bg-color" value="#000000" size="7">
+									<input id="tab-active-bg-color" name="settings[current][branding][tabs][tab-active-bg-color]" value="{{ settings.current.branding.tabs['tab-active-bg-color'] }}" size="7">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="tab-active-bg-color-none">No tab active background color</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="tab-active-bg-color-none" name="tab-active-bg-color-none" value="">
+									{{ utils.checkBox("settings[current][branding][tabs][tab-active-bg-color-none]", settings.current.branding.tabs['tab-active-bg-color-none']) }}
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End tabs #}
 					</div>
 				</div>
 			</div>
-			{# End branding #}
+			{# End logo, images, and colors #}
 			{# Begin typography #}
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -368,29 +448,38 @@
 				<div id="collapseTypography" class="panel-collapse collapse">
 					<div class="panel-body">
 						{# Begin base styles #}
-						<h4>Base Styles</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Base Styles</legend>
 							<div class="form-group">
 								<label for="base-typeface" class="col-sm-3 control-label">Base typeface</label>
 								<div class="col-sm-9">
-									<select class="font" name="" id="base-typeface">
-										<option value="Helvetica, Arial, 'Lucida Grande', sans-serif">Lucida Grande</option>
+									<select class="font" name="" id="base-typeface" name="settings[current][typography][base_styles][base-typeface]">
+										<option value="Helvetica, Arial, 'Lucida Grande', sans-serif"{{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Helvetica, Arial, 'Lucida Grande', sans-serif") }}>Lucida Grande</option>
+
 										<optgroup label="Sans-serif">
-											<option value="Helvetica, Arial, sans-serif" selected="">Helvetica/Arial</option>
-											<option value="Impact, Charcoal, Helvetica, Arial, sans-serif">Impact</option>
-											<option value="'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif">Lucida Grande</option>
-											<option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
-											<option value="Verdana, Helvetica, Arial, sans-serif">Verdana</option>
+											<option value="Helvetica, Arial, sans-serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Helvetica, Arial, sans-serif") }}>Helvetica/Arial</option>
+
+											<option value="Impact, Charcoal, Helvetica, Arial, sans-serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Impact, Charcoal, Helvetica, Arial, sans-serif") }}>Impact</option>
+											
+											<option value="'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif") }}>Lucida Grande</option>
+											
+											<option value="Trebuchet MS, sans-serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Trebuchet MS, sans-serif") }}>Trebuchet MS</option>
+											
+											<option value="Verdana, Helvetica, Arial, sans-serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Verdana, Helvetica, Arial, sans-serif") }}>Verdana</option>
 										</optgroup>
 										<optgroup label="Serif">
-											<option value="Garamond, Baskerville, Caslon, serif">Garamond</option>
-											<option value="Georgia, Utopia, 'Times New Roman', Times, serif">Georgia</option>
-											<option value="Palatino, 'Palatino Linotype', 'Book Antiqua', serif">Palatino</option>
-											<option value="'Times New Roman', Times, serif">Times New Roman</option>
+											<option value="Garamond, Baskerville, Caslon, serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Garamond, Baskerville, Caslon, serif") }}>Garamond</option>
+
+											<option value="Georgia, Utopia, 'Times New Roman', Times, serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Georgia, Utopia, 'Times New Roman', Times, serif") }}>Georgia</option>
+
+											<option value="Palatino, 'Palatino Linotype', 'Book Antiqua', serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Palatino, 'Palatino Linotype', 'Book Antiqua', serif") }}>Palatino</option>
+
+											<option value="'Times New Roman', Times, serif" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"'Times New Roman', Times, serif") }}>Times New Roman</option>
 										</optgroup>
 										<optgroup label="Monospace">
-											<option value="'Courier New', Courier, monospace">Courier New</option>
-											<option value="Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace">Monaco/Lucida Console</option>
+											<option value="'Courier New', Courier, monospace" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"'Courier New', Courier, monospace") }}>Courier New</option>
+
+											<option value="Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace" {{ utils.selectValue(settings.current.typography.base_styles['base-typeface'],"Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace") }}>Monaco/Lucida Console</option>
 										</optgroup>
 									</select>
 								</div>
@@ -398,158 +487,216 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="body-font-size">Font size</label>
 								<div class="col-sm-9">
-									<select name="" id="body-font-size">
-										<option value="16px">16px</option>
-										<option value="15px">15px</option>
-										<option value="14px" selected="selected">14px</option>
-										<option value="13px">13px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
+									<select name="settings[current][typography][base_styles][body-font-size]" id="body-font-size">
+										<option value="16px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"16px") }}>16px</option>
+										<option value="15px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"15px") }}>15px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"14px") }}>14px</option>
+										<option value="13px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"13px") }}>13px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.base_styles['body-font-size'],"11px") }}>11px</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="body-line-height">Line Height</label>
 								<div class="col-sm-9">
-									<select name="theme_settings[current_values][body_line_height]" id="body_line_height">
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="22px" selected="selected">22px</option>
-										<option value="20px">20px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
+									<select name="settings[current][typography][base_styles][body-line-height]" id="body-line-height">
+										<option value="28px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"24px") }}>24px</option>
+										<option value="22px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"22px") }}>22px</option>
+										<option value="20px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"20px") }}>20px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.base_styles['body-line-height'],"16px") }}>16px</option>
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End base styles #}
 						{# Begin navigation styles #}
-						<h4>Navigation Styles</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Navigation Styles</legend>
 							<div class="form-group">
-								<label for="google-nav-font" class="control-label col-sm-3">Google webfonts navigation typeface</label>
+								<label for="google-nav-font" class="control-label col-sm-3">Google webfonts typeface</label>
 								<div class="col-sm-9">
-									<select name="google-nav-font" id="google-nav-font">
-										<option value="none" selected="">-- None --</option>
-										<option value="Abril+Fatface">Abril Fatface</option>
-										<option value="Arvo">Arvo</option>
-										<option value="Asap">Asap</option>
-										<option value="Bevan">Bevan</option>
-										<option value="Cabin">Cabin</option>
-										<option value="Copse">Copse</option>
-										<option value="Dancing+Script">Dancing Script</option>
-										<option value="Droid+Sans">Droid Sans</option>
-										<option value="Droid+Serif">Droid Serif</option>
-										<option value="Gentium+Book+Basic">Gentium Book Basic</option>
-										<option value="Gravitas+One">Gravitas One</option>
-										<option value="Gruppo">Gruppo</option>
-										<option value="Josefin+Slab">Josefin Slab</option>
-										<option value="Josefin+Sans">Josefin Sans</option>
-										<option value="Kreon">Kreon</option>
-										<option value="Lato">Lato</option>
-										<option value="Merriweather">Merriweather</option>
-										<option value="Old+Standard+TT">Old Standard TT</option>
-										<option value="Open+Sans">Open Sans</option>
-										<option value="Vollkorn">Vollkorn</option>
+									<select name="settings[current][typography][navigation_styles][google-nav-font]" id="google-nav-font">
+										<option value="none" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"") }}>-- None --</option>
+										<option value="Abril+Fatface" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Abril+Fatface") }}>Abril Fatface</option>
+										<option value="Arvo" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Arvo") }}>Arvo</option>
+
+										<option value="Asap" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Asap") }}>Asap</option>
+
+										<option value="Bevan" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Bevan") }}>Bevan</option>
+
+										<option value="Cabin" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Cabin") }}>Cabin</option>
+
+										<option value="Copse" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Copse") }}>Copse</option>
+
+										<option value="Dancing+Script" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Dancing+Script") }}>Dancing Script</option>
+
+										<option value="Droid+Sans" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Droid+Sans") }}>Droid Sans</option>
+
+										<option value="Droid+Serif" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Droid+Serif") }}>Droid Serif</option>
+
+										<option value="Gentium+Book+Basic" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Gentium+Book+Basic") }}>Gentium Book Basic</option>
+
+										<option value="Gravitas+One" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Gravitas+One") }}>Gravitas One</option>
+
+										<option value="Gruppo" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Gruppo") }}>Gruppo</option>
+
+										<option value="Josefin+Slab" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Josefin+Slab") }}>Josefin Slab</option>
+
+										<option value="Josefin+Sans" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Josefin+Sans") }}>Josefin Sans</option>
+
+										<option value="Kreon" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Kreon") }}>Kreon</option>
+
+										<option value="Lato" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Lato") }}>Lato</option>
+
+										<option value="Merriweather" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Merriweather") }}>Merriweather</option>
+
+										<option value="Old+Standard+TT" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Old+Standard+TT") }}>Old Standard TT</option>
+
+										<option value="Open+Sans" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Open+Sans") }}>Open Sans</option>
+
+										<option value="Vollkorn" {{ utils.selectValue(settings.current.typography.navigation_styles['google-nav-font'],"Vollkorn") }}>Vollkorn</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="nav-font-size" class="control-label col-sm-3">Navigation Font Size</label>
 								<div class="col-sm-9">
-									<select name="nav-font-size" id="nav-font-size">
-										<option value="20px">20 px</option>
-										<option value="19px">19 px</option>
-										<option value="18px">18 px</option>
-										<option value="17px">17 px</option>
-										<option value="16px">16 px</option>
-										<option value="15px">15 px</option>
-										<option value="14px" selected="">14 px</option>
-										<option value="13px">13 px</option>
-										<option value="12px">12 px</option>
-										<option value="11px">11 px</option>
+									<select name="settings[current][typography][navigation_styles][nav-font-size]" id="nav-font-size">
+										<option value="20px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"20px") }}>20 px</option>
+
+										<option value="19px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"19px") }}>19 px</option>
+
+										<option value="18px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"18px") }}>18 px</option>
+
+										<option value="17px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"17px") }}>17 px</option>
+
+										<option value="16px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"16px") }}>16 px</option>
+
+										<option value="15px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"15px") }}>15 px</option>
+
+										<option value="14px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"14px") }}>14 px</option>
+
+										<option value="13px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"13px") }}>13 px</option>
+
+										<option value="12px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"12px") }}>12 px</option>
+
+										<option value="11px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-size'],"11px") }}>11 px</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-font-weight">Navigation font weight</label>
 								<div class="col-sm-9">
-									<select name="nav-font-weight" id="nav-font-weight">
-										<option value="700">Bold</option>
-										<option value="400" selected="">Regular</option>
-										<option value="300">Light</option>
+									<select name="settings[current][typography][navigation_styles][nav-font-weight]" id="nav-font-weight">
+										<option value="700" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-weight'],"700") }}>Bold</option>
+										<option value="400" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-weight'],"400") }}>Regular</option>
+										<option value="300" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-weight'],"300") }}>Light</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-font-style">Navigation font style</label>
 								<div class="col-sm-9">
-									<select name="theme_settings[current_values][nav_font_style]" id="nav_font_style">
-										<option value="none" selected="">None</option>
-										<option value="uppercase">Uppercase</option>
-										<option value="lowercase">Lowercase</option>
+									<select name="settings[current][typography][navigation_styles][nav-font-style]" id="nav-font-style">
+										<option value="none" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-style'],"none") }}>None</option>
+										<option value="uppercase" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-style'],"uppercase") }}>Uppercase</option>
+										<option value="lowercase" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-font-style'],"lowercase") }}>Lowercase</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="navigation-line-height">Navigation line height</label>
 								<div class="col-sm-9">
-									<select name="nav-line-height" id="nav-line-height">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px" selected="">48px</option>
-										<option value="36px">36px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][navigation_styles][nav-line-height]" id="nav-line-height">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"72px") }}>72px</option>
+
+										<option value="60px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"60px") }}>60px</option>
+
+										<option value="48px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"48px") }}>48px</option>
+
+										<option value="36px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"36px") }}>36px</option>
+
+										<option value="24px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"24px") }}>24px</option>
+
+										<option value="21px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"21px") }}>21px</option>
+
+										<option value="18px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"18px") }}>18px</option>
+
+										<option value="16px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"16px") }}>16px</option>
+
+										<option value="14px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"14px") }}>14px</option>
+
+										<option value="12px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"12px") }}>12px</option>
+
+										<option value="11px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"11px") }}>11px</option>
+
+										<option value="10px" {{ utils.selectValue(settings.current.typography.navigation_styles['nav-line-height'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End navigation styles #}
 						{# Begin heading styles #}
-						<h4>Heading Styles</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Heading Styles</legend>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="google-header-font">Google typeface</label>
 								<div class="col-sm-9">
-									<select name="google-header-font" id="google-header-font">
-										<option value="none">-- None --</option>
-										<option value="Abril+Fatface">Abril Fatface</option>
-										<option value="Arvo">Arvo</option>
-										<option value="Asap" selected="">Asap</option>
-										<option value="Bevan">Bevan</option>
-										<option value="Cabin">Cabin</option>
-										<option value="Copse">Copse</option>
-										<option value="Dancing+Script">Dancing Script</option>
-										<option value="Droid+Sans">Droid Sans</option>
-										<option value="Droid+Serif">Droid Serif</option>
-										<option value="Gentium+Book+Basic">Gentium Book Basic</option>
-										<option value="Gravitas+One">Gravitas One</option>
-										<option value="Gruppo">Gruppo</option>
-										<option value="Josefin+Slab">Josefin Slab</option>
-										<option value="Josefin+Sans">Josefin Sans</option>
-										<option value="Kreon">Kreon</option>
-										<option value="Lato">Lato</option>
-										<option value="Merriweather">Merriweather</option>
-										<option value="Old+Standard+TT">Old Standard TT</option>
-										<option value="Open+Sans">Open Sans</option>
-										<option value="Vollkorn">Vollkorn</option>
+									<select name="settings[current][typography][heading_styles][google-header-font]" id="google-header-font">
+										<option value="none" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"none") }}>-- None --</option>
+
+										<option value="Abril+Fatface" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Abril+Fatface") }}>Abril Fatface</option>
+
+										<option value="Arvo" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Arvo") }}>Arvo</option>
+
+										<option value="Asap" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Asap") }}>Asap</option>
+
+										<option value="Bevan" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Bevan") }}>Bevan</option>
+
+										<option value="Cabin" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Cabin") }}>Cabin</option>
+
+										<option value="Copse" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Copse") }}>Copse</option>
+
+										<option value="Dancing+Script" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Dancing+Script") }}>Dancing Script</option>
+
+										<option value="Droid+Sans" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Droid+Sans") }}>Droid Sans</option>
+
+										<option value="Droid+Serif" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Droid+Serif") }}>Droid Serif</option>
+
+										<option value="Gentium+Book+Basic" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Gentium+Book+Basic") }}>Gentium Book Basic</option>
+
+										<option value="Gravitas+One" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Gravitas+One") }}>Gravitas One</option>
+
+										<option value="Gruppo" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Gruppo") }}>Gruppo</option>
+
+										<option value="Josefin+Slab" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Josefin+Slab") }}>Josefin Slab</option>
+
+										<option value="Josefin+Sans" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Josefin+Sans") }}>Josefin Sans</option>
+
+										<option value="Kreon" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Kreon") }}>Kreon</option>
+
+										<option value="Lato" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Lato") }}>Lato</option>
+
+										<option value="Merriweather" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Merriweather") }}>Merriweather</option>
+
+										<option value="Old+Standard+TT" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Old+Standard+TT") }}>Old Standard TT</option>
+
+										<option value="Open+Sans" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Open+Sans") }}>Open Sans</option>
+
+										<option value="Vollkorn" {{ utils.selectValue(settings.current.typography.heading_styles['google-header-font'],"Vollkorn") }}>Vollkorn</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="header-weight">Font weight</label>
 								<div class="col-sm-9">
-									<select name="header-weight" id="header-weight">
-										<option value="700">Bold</option>
-										<option value="400" selected="">Regular</option>
-										<option value="300">Light</option>
+									<select name="settings[current][typography][heading_styles][header-weight]" id="header-weight">
+										<option value="700" {{ utils.selectValue(settings.current.typography.heading_styles['header-weight'],"700") }}>Bold</option>
+										<option value="400" {{ utils.selectValue(settings.current.typography.heading_styles['header-weight'],"400") }}>Regular</option>
+										<option value="300" {{ utils.selectValue(settings.current.typography.heading_styles['header-weight'],"300") }}>Light</option>
 									</select>
 								</div>
 							</div>
@@ -566,216 +713,220 @@
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="site-heading-font-size">Site heading</label>
 								<div class="col-sm-9">
-									<select name="site-heading-font-size" id="site-heading-font-size">
-										<option value="72px" selected="">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px">36px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][heading_styles][site-heading-font-size]" id="site-heading-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"36px") }}>36px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"11px") }}>11px</option>
+										<option value="" {{ utils.selectValue(settings.current.typography.heading_styles['site-heading-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End heading styles #}
-						{# Begin main heading styles h1 elements #}
-						<h4>Main heading styles (h1 Elements)</h4>
-						<form class="form-horizontal" role="form">
+						{# Begin headings #}
+						<fieldset>
+							<legend>Headings</legend>
+							{# Begin main heading styles h1 elements #}
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="main-heading-font-size">Font size</label>
+								<label class="control-label col-sm-3" for="h1-font-size">H1 font size</label>
 								<div class="col-sm-9">
-									<select name="main-heading-font-size" id="main-heading-font-size">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px" selected="">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][headings][main-heading-font-size]" id="main-heading-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['site-heading-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
+							{# End main heading styles h1 elements #}
+							{# Begin sub heading styles h2 elements #}
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="main-heading-line-height">Line height</label>
+								<label class="control-label col-sm-3" for="h2-font-size">H2 font size</label>
 								<div class="col-sm-9">
-									<select name="main-heading-line-height" id="main-heading-line-height">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px" selected="">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][headings][h2-font-size]" id="h2-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['h2-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
-						</form>
-						{# End main heading styles h1 elements #}
-						{# Begin sub heading styles h2 elements #}
-						<h4>Sub heading styles (h2 Elements)</h4>
-						<form class="form-horizontal" role="form">
+							{# End sub heading styles h2 elements #}
+							{# Begin sub heading styles h3 elements #}
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="sub-heading-h2-font-size">Font size</label>
+								<label class="control-label col-sm-3" for="sub-heading-h3-font-size">H3 font Size</label>
 								<div class="col-sm-9">
-									<select name="sub-heading-h2-font-size" id="sub-heading-h2-font-size">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px" selected="">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][headings][sub-heading-h3-font-size]" id="sub-heading-h3-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['sub-heading-h3-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
+							{# End sub heading styles h3 elements #}
+							{# Begin sub heading styles h4 elements #}
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="sub-heading-h2-line-height">Line height</label>
+								<label class="control-label col-sm-3" for="h4-font-size">H4 font Size</label>
 								<div class="col-sm-9">
-									<select name="sub-heading-h2-line-height" id="sub-heading-h2-line-height">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px" selected="">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][headings][h4-font-size]" id="h4-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['h4-font-size'],"10px") }}>10px</option>
+									</select>
+								</div>
+							</div>						
+							{# End sub heading styles h4 elements #}
+							{# Begin sub heading styles h5 elements #}
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="h5-font-size">H5 font Size</label>
+								<div class="col-sm-9">
+									<select name="settings[current][typography][headings][h5-font-size]" id="h5-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['h5-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
-						</form>
-						{# End sub heading styles h2 elements #}
-						{# Begin sub heading styles h3 elements #}
-						<h4>Sub heading styles (h3 Elements)</h4>
-						<form class="form-horizontal" role="form">
+							{# End sub heading styles h5 elements #}
+							{# Begin sub heading styles h6 elements #}
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="sub-heading-h3-font-size">Font Size</label>
+								<label class="control-label col-sm-3" for="h6-font-size">H6 font Size</label>
 								<div class="col-sm-9">
-									<select name="sub-heading-h3-font-size" id="sub-heading-h3-font-size">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px" selected="">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][headings][h6-font-size]" id="h6-font-size">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"48px") }}>48px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.headings['h6-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-3" for="sub-heading-h3-font-size">Line Height</label>
-								<div class="col-sm-9">
-									<select name="ç footer-heading-line-height" id="sub-heading-h3-font-size">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="36px">36px</option>
-										<option value="28px" selected="">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
-									</select>
-								</div>
-							</div>
-							<h4>Button Styles</h4>
-							
+						</fieldset>
+						{# End headings #}
+						{# Begin button styles #}
+						<fieldset>
+							<legend>Button Styles</legend>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="btn-font-size">Font Size</label>
 								<div class="col-sm-9">
-									<select name="btn-font-size" id="btn-font-size">
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="15px">15px</option>
-										<option value="14px">14px</option>
-										<option value="12px" selected="">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][button_styles][btn-font-size]" id="btn-font-size">
+										<option value="21px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"16px") }}>16px</option>
+										<option value="15px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"15px") }}>15px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-size'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="btn-line-height">Line Height</label>
 								<div class="col-sm-9">
-									<select name="btn-line-height" id="btn-line-height">
-										<option value="72px">72px</option>
-										<option value="60px">60px</option>
-										<option value="48px">48px</option>
-										<option value="40px">40px</option>
-										<option value="36px" selected="">36px</option>
-										<option value="28px">28px</option>
-										<option value="24px">24px</option>
-										<option value="21px">21px</option>
-										<option value="18px">18px</option>
-										<option value="16px">16px</option>
-										<option value="14px">14px</option>
-										<option value="12px">12px</option>
-										<option value="11px">11px</option>
-										<option value="10px">10px</option>
+									<select name="settings[current][typography][button_styles][btn-line-height]" id="btn-line-height">
+										<option value="72px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"72px") }}>72px</option>
+										<option value="60px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"60px") }}>60px</option>
+										<option value="48px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"48px") }}>48px</option>
+										<option value="40px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"40px") }}>40px</option>
+										<option value="36px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"36px") }}>36px</option>
+										<option value="28px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"28px") }}>28px</option>
+										<option value="24px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"24px") }}>24px</option>
+										<option value="21px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"21px") }}>21px</option>
+										<option value="18px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"18px") }}>18px</option>
+										<option value="16px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"16px") }}>16px</option>
+										<option value="14px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"14px") }}>14px</option>
+										<option value="12px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"12px") }}>12px</option>
+										<option value="11px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"11px") }}>11px</option>
+										<option value="10px" {{ utils.selectValue(settings.current.typography.button_styles['btn-line-height'],"10px") }}>10px</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="btn-font-style">Font Style</label>
 								<div class="col-sm-9">
-									<select name="btn-font-style" id="btn-font-style">
-										<option value="none" selected="">None</option>
-										<option value="uppercase">Uppercase</option>
-										<option value="lowercase">Lowercase</option>
+									<select name="settings[current][typography][button_styles][btn-font-style]" id="btn-font-style">
+										<option value="none" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-style'],"none") }}>None</option>
+										<option value="uppercase" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-style'],"uppercase") }}>Uppercase</option>
+										<option value="lowercase" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-style'],"lowercase") }}>Lowercase</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="btn-font-weight">Font Weight</label>
 								<div class="col-sm-9">
-									<select name="btn-font-weight" id="btn-font-weight">
-										<option value="700" selected="">Bold</option>
-										<option value="400">Regular</option>
+									<select name="settings[current][typography][button_styles][btn-font-weight]" id="btn-font-weight">
+										<option value="700" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-weight'],"700") }}>Bold</option>
+										<option value="400" {{ utils.selectValue(settings.current.typography.button_styles['btn-font-weight'],"400") }}>Regular</option>
 									</select>
 								</div>
 							</div>
-						</form>
-						{# End sub heading styles h3 elements #}
+						</fieldset>
+						{# End button styles #}
 					</div>
 				</div>
 			</div>
@@ -791,102 +942,91 @@
 				</div>
 				<div id="collapseNavigation" class="panel-collapse collapse">
 					<div class="panel-body">
-						<h4>Base Styles</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Base Styles</legend>
 							<div class="form-group">
-								<label class="control-label col-sm-3" for="navigation-alignment">Main navigation alignment? (Note: using right aligned navigation requires a logo smaller than 300px in width)</label>
+								<label class="control-label col-sm-3" for="navigation-alignment">Main navigation alignment</label>
 								<div class="col-sm-9">
-									<input type="radio" name="navigation-alignment" value="right" checked=""> Right of Logo
-									<input type="radio" name="navigation-alignment" value="below"> Below Logo
+									<input type="radio" name="settings[current][navigation][base_styles][navigation-alignment]" value="right" {{ utils.selectValue(settings.current.navigation.base_styles['navigation-alignment'],"") }}> Right of Logo
+									<input type="radio" name="settings[current][navigation][base_styles][navigation-alignment]" value="below" {{ utils.selectValue(settings.current.navigation.base_styles['navigation-alignment'],"") }}> Below Logo
+									<p>(Note: using right aligned navigation requires a logo smaller than 300px in width)</p>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="navigation-center">Center navigation links?</label>
 								<div class="col-sm-9">
-									<input id="navigation-center" name="navigation-center" value="0">
+									<input id="navigation-center" name="settings[current][navigation][base_styles][navigation-center]" value="{{ settings.current.navigation.base_styles['navigation-center'] }}">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-right-padding">Right nav top padding (in pixels)</label>
 								<div class="col-sm-9">
-									<input id="nav-right-padding" name="nav-right-padding" value="70">
+									<input id="nav-right-padding" name="settings[current][navigation][base_styles][nav-right-padding]" value="{{ settings.current.navigation.base_styles['nav-right-padding'] }}">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-link-color">Nav Link Color</label>
 								<div class="col-sm-9">
-									<input id="nav-link-color" name="nav-link-color" value="#888888" size="7">
+									<input id="nav-link-color" name="settings[current][navigation][base_styles][nav-link-color]" value="{{ settings.current.navigation.base_styles['nav-link-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-link-hover-color">Nav Link Hover Color</label>
 								<div class="col-sm-9">
-									<input id="nav-link-hover-color" name="nav-link-hover-color" value="#222222" size="7">
+									<input id="nav-link-hover-color" name="settings[current][navigation][base_styles][nav-link-hover-color]" value="{{ settings.current.navigation.base_styles['nav-link-hover-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="selected-nav-link-color">Selected Nav Link Color</label>
 								<div class="col-sm-9">
-									<input id="selected-nav-link-color" name="selected-nav-link-color" value="#222222" size="7">
+									<input id="selected-nav-link-color" name="settings[current][navigation][base_styles][selected-nav-link-color]" value="{{ settings.current.navigation.base_styles['selected-nav-link-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-dropdown-background-color">Nav Dropdown Background Color</label>
 								<div class="col-sm-9">
-									<input id="nav-dropdown-background-color" name="nav-dropdown-background-color" value="#ffffff" size="7">
+									<input id="nav-dropdown-background-color" name="settings[current][navigation][base_styles][nav-dropdown-background-color]" value="{{ settings.current.navigation.base_styles['nav-dropdown-background-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-dropdown-link-color">Nav Dropdown Link Color</label>
 								<div class="col-sm-9">
-									<input id="nav-dropdown-link-color" name="nav-dropdown-link-color" value="#888888" size="7">
+									<input id="nav-dropdown-link-color" name="settings[current][navigation][base_styles][nav-dropdown-link-color]" value="{{ settings.current.navigation.base_styles['nav-dropdown-link-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="nav-dropdown-link-hover-color">Nav Dropdown Link Hover Color</label>     
 								<div class="col-sm-9">
-									<input id="nav-dropdown-link-hover-color" name="nav-dropdown-link-hover-color" value="#222222" size="7">
+									<input id="nav-dropdown-link-hover-color" name="settings[current][navigation][base_styles][nav-dropdown-link-hover-color]" value="{{ settings.current.navigation.base_styles['nav-dropdown-link-hover-color'] }}" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="show-dropdown-arrow">Show dropdown arrow icon?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="show-dropdown-arrow" name="show-dropdown-arrow" value="1" selected="" checked="">
+									{{ utils.checkBox("settings[current][navigation][base_styles][show-dropdown-arrow]", settings.current.navigation.base_styles['show-dropdown-arrow']) }}
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="dropdown-arrow">Show dropdown menu arrow?</label>
 								<div class="col-sm-9">
-									<input type="radio" name="dropdown-arrow" value="none"> None
-									<input type="radio" name="dropdown-arrow" value="light"> Light
-									<input type="radio" name="dropdown-arrow" value="dark" checked=""> Dark
+									<input type="radio" name="settings[current][navigation][base_styles][dropdown-arrow]" value="none" {{ utils.selectValue(settings.current.navigation.base_styles['dropdown-arrow'],"none") }}> None
+									<input type="radio" name="settings[current][navigation][base_styles][dropdown-arrow]" value="light" {{ utils.selectValue(settings.current.navigation.base_styles['dropdown-arrow'],"light") }}> Light
+									<input type="radio" name="settings[current][navigation][base_styles][dropdown-arrow]" value="dark" {{ utils.selectValue(settings.current.navigation.base_styles['dropdown-arrow'],"dark") }}> Dark
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="display-blog-dropdown">Display recent articles in a dropdown under Blog links?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="display-blog-dropdown" name="display-blog-dropdown" value="1" checked="">
+									<input type="checkbox" id="display-blog-dropdown" name="settings[current][navigation][base_styles][display-blog-dropdown]" value="1" {{ utils.selectValue(settings.current.navigation.base_styles['display-blog-dropdown'],"") }}>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="display-collection-dropdown">Display product tags in a dropdown under Collection links?</label>
 								<div class="col-sm-9">
-									<input type="checkbox" id="display-collection-dropdown" name="display-collection-dropdown" value="1" checked="">
+									<input type="checkbox" id="display-collection-dropdown" name="settings[current][navigation][base_styles][display-collection-dropdown]" value="1" {{ utils.selectValue(settings.current.navigation.base_styles['display-collection-dropdown'],"") }}>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -902,14 +1042,14 @@
 				</div>
 				<div id="collapseFooter" class="panel-collapse collapse">
 					<div class="panel-body">
-						<form class="form-horizontal" role="role">
+						<fieldset>
+						<legend>General</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-linklist-title">Link list title:</label>
 								<div class="col-sm-9">
 									<input type="text" id="footer-linklist-title" name="footer-linklist-title" value="Quick Links">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-linklist">Link list to display</label>
 								<div class="col-sm-9">
@@ -920,14 +1060,12 @@
 									</select>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-blog-post-header">Latest blog post header:</label>
 								<div class="col-sm-9">
 									<input type="text" id="footer-blog-post-header" name="footer-blog-post-header" value="Latest news">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-blog-post">Blog to use for latest blog post:</label>
 								<div class="col-sm-9">
@@ -945,63 +1083,54 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-display-newsletter">Display newsletter?</label>
 								<div class="col-sm-9">        
 									<input type="checkbox" id="footer-display-newsletter" name="footer-display-newsletter" value="1" checked="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer_newsletter_title">Newsletter title:</label>
 								<div class="col-sm-9">
 									<input type="text" id="footer-newsletter-title" name="footer-newsletter-title" value="Newsletter">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="mailing-list-form-action">Mailchimp form action URL</label>
 								<div class="col-sm-9">
 									<input type="text" id="mailing-list-form-action" name="mailing-list-form-action" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="newsletter-btn-color">Newsletter button color</label>
 								<div class="col-sm-9">
 									<input id="newsletter-btn-color" name="newsletter-btn-color" value="#50b3da" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="newsletter-btn-hover-color">Newsletter button color on hover</label>
 								<div class="col-sm-9">        
 									<input id="newsletter-btn-hover-color" name="newsletter-btn-hover-color" value="#51a7ca" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="newsletter-btn-text-color">Newsletter button text color</label>
 								<div class="col-sm-9">        
 									<input id="newsletter-btn-text-color" name="newsletter-btn-text-color" value="#ffffff" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="newsleter-btn-hover-text-color">Newsletter button text color on hover</label>
 								<div class="col-sm-9">        
 									<input id="newsleter_btn_hover_text_color" name="newsleter_btn_hover_text_color" value="#ffffff" size="7">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="enable-social-links">Display social links?</label>
 								<div class="col-sm-9">        
 									<input type="checkbox" id="enable-social-links" name="enable-social-links" value="1" checked="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="social-icons">Social icons color:</label>
 								<div class="col-sm-9">
@@ -1009,77 +1138,66 @@
 									<input type="radio" name="social-icons" value="dark" checked=""> Dark
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="footer-social-title">Social links title:</label>
 								<div class="col-sm-9">
 									<input type="text" id="footer-social-title" name="footer-social-title" value="Follow us">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="twitter-link">Twitter Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="twitter-link" name="twitter-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="facebook-link">Facebook Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="facebook-link" name="facebook-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="google-link">Google+ Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="google-link" name="google-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="youtube-link">Youtube Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="youtube-link" name="youtube-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="vimeo-link">Vimeo Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="vimeo-link" name="vimeo-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="pinterest-link">Pinterest Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="pinterest-link" name="pinterest-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="instagram-link">Instagram Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="instagram-link" name="instagram-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="tumblr-link">Tumblr Link</label>
 								<div class="col-sm-9">
 									<input type="text" id="tumblr-link" name="tumblr-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="atom-link">Blog feed</label>
 								<div class="col-sm-9">
 									<input type="text" id="atom-link" name="atom-link" value="">
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="payment_methods">Payment Methods:</label>
 								<div class="col-sm-9">        
@@ -1094,8 +1212,7 @@
 									<input type="checkbox" id="accept-bitcoin" name="" value="1"> Bitcoin
 								</div>
 							</div>
-
-						</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -1112,8 +1229,8 @@
 				<div id="collapseHomepage" class="panel-collapse collapse">
 					<div class="panel-body">
 						{# Begin homepage content #}
-						<h4>Homepage Content</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Homepage Content</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="frontpage-collection">Collection of Products</label>
 								<div class="col-sm-9">
@@ -1148,11 +1265,11 @@
 									</div>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End homepage content #}
 						{# Begin slideshow settings #}
-						<h4>Slideshow Settings</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Slideshow Settings</legend>
 							<div class="form-group">
 								<div class="col-sm-12">
 									For best results, upload images that are at least 966px wide. Try to keep your slideshow images the same size.
@@ -1211,11 +1328,11 @@
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End slideshow settings #}
 						{# Begin slideshow images #}
-						<h4>Slideshow Images</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Slideshow Images</legend>
 							<div class="form-group">
 								<label class="col-sm-3">Slide 1</label>
 								<div class="col-sm-1">
@@ -1330,18 +1447,18 @@
 									<input type="text" id="slide-6-alt" name="slide-6-alt" value="">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End slideshow images #}
 						{# Begin featured products #}
-						<h4>Featured Products</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Featured Products</legend>
 							<div class="form-group">
 								<div class="col-sm-12">
 									For best results, upload images that are 302 pixels wide. Keep all 3 images the same size.
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="show-fp-images">Show 3 featured products below slideshow?</label>
+								<label class="col-sm-3 control-label" for="show-fp-images">Show featured products below slideshow?</label>
 								<div class="col-sm-9">
 									<input type="checkbox" id="show-fp-images" name="show-fp-images" value="1" checked="">
 								</div>
@@ -1394,11 +1511,11 @@
 									<input type="text" id="fp-image-3-alt" name="fp-image-3-alt" value="">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End featured products #}
 						{# Begin featured collections #}
-						<h4>Featured Products</h4>
-						<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Featured Products</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="show-collections">Feature collections on home page?</label>
 								<div class="col-sm-9">
@@ -1415,7 +1532,7 @@
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 						{# End featured collections #}
 					</div>	 
 				</div>
@@ -1431,8 +1548,8 @@
 					</h3>
 				</div>
 				<div id="collapseProductPage" class="panel-collapse collapse">
-					<div class="panel-body">						
-						<form class="form-horizontal" role="form">
+					<div class="panel-body">
+						<fieldset>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="enable-product-image-zoom">Enable image zoom feature?</label>
 								<div class="col-sm-9">
@@ -1466,7 +1583,7 @@
 									</select>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -1482,7 +1599,7 @@
 				</div>
 				<div id="collapseProductCollection" class="panel-collapse collapse">
 					<div class="panel-body">
-						<form class="form-horizontal" role="form">
+						<fieldset>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="collection-tags">Display browse by product tags?</label>
 								<div class="col-sm-9">
@@ -1564,7 +1681,7 @@
 									<input type="checkbox" id="product-vendor" name="product-vendor" value="1" checked="">
 								</div>
 							</div>  
-						</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -1580,7 +1697,7 @@
 				</div>
 				<div id="collapseBlogPage" class="panel-collapse collapse">
 					<div class="panel-body">
-						<form class="form-horizontal" role="form">
+						<fieldset>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="display-blog-tags">Display blog tags?</label>
 								<div class="col-sm-9">
@@ -1611,7 +1728,7 @@
 									<input id="blog-tag-font-hover-color" name="blog-tag-font-hover-color" value="#333333" size="7">
 								</div>
 							</div>
-						</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -1627,7 +1744,7 @@
 				</div>
 				<div id="collapseCart" class="panel-collapse collapse">
 					<div class="panel-body">
-						<form class=" form-horizontal" role=" form">
+						<fieldset>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="icon-cart">Dispay cart icon?</label>
 								<div class="col-sm-9">
@@ -1687,10 +1804,10 @@
 									</div>
 								</div>
 							</div>
-						</form>
+						</fieldset>
 					</div>
 				</div>
-			</div>
+			</div>			
 			{# End cart #}
 			{# Begin additional layouts #}
 			<div class="panel panel-default">
@@ -1710,5 +1827,5 @@
 			{# End additional layouts #}
 		</div>
 	</div>
-					<pre>{{  dump(settings) }}</pre>
+	<pre>{{  dump(settings) }}</pre>
 </div>
